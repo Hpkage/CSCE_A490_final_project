@@ -1,0 +1,115 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+
+{% block title %}
+    Auction - {{ auction.title }}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <!-- Auction listing's image -->
+            <div class="col py-3">
+                <img src="{{ auction.image }}" alt="auction.title" style="width: 22vw; min-width: 320px; max-width: 400ox; height:auto;">
+            </div>
+
+            <!-- Auction listing details-->
+            <div class="col-md-6 my-3">
+                <!-- Header with title and watchlist icon -->
+                <div class="header-section mb-3">
+                    <h3 class="auction-title">{{ auction.title }}</h3>
+                    {% if user.is_authenticated %}
+                        <!-- Watchlist Icon -->
+                        {% if auction in user.watchlist.auctions.all %}
+                            <i id="watchlist-icon-{{ auction.id }}" class="fas fa-heart watchlist-icon in-watchlist" onclick="toggleWatchlist(this)" data-auction-id="{{ auction.id }}" style="color: red;"></i>
+                        {% else %}
+                            <i id="watchlist-icon-{{ auction.id }}" class="fas fa-heart-broken watchlist-icon" onclick="toggleWatchlist(this)" data-auction-id="{{ auction.id }}" style="color: red;"></i>
+                        {% endif %}
+                    {% endif %}
+                </div>
+
+                <!-- watching badge -->
+                {% if user.is_authenticated %}
+                    {% if watching %}
+                    <h5><span class="badge badge-dark">Watching</span></h5>
+                    {% endif %}
+                {% endif %}
+
+                <div>Description:</div>
+                <div><p>{{ auction.description }}</p></div>
+                <div>Seller:</div>
+                <div><p>{{ auction.seller.username }}</p></div>
+                <div>Created on:</div>
+                <div><p><small>{{ auction.creation_date }}</small></p></div>
+                <div>Updated on:</div>
+            </div>
+        </div>
+    </div>
+
+    <hr id="listing_divider">
+
+    <!-- comment form -->
+    {% if user.is_authenticated %}
+    <div class="container my-5" id="comment_block">
+        <h4>Leave your comment</h4>
+        <div data-auction-id="{{ auction.id }}" id="comment-section">
+            <form id="comment-form" action="{% url 'comment' auction.id %}" method="post">
+                {% csrf_token %} 
+
+                <div class="row">
+                    <div class="col">
+                        <div><label>Headline:</label></div>
+                        <div>{{ commentForm.headline }}</div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div><label>Content:</label></div>
+                        <div>{{ commentForm.message }}</div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col"> 
+                        <button type="submit" id="comment_button" class="btn btn-primary" style="width: 120px">Submit</button>
+                    </div>          
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- comments display -->
+    <div class="container" id="comment_display">
+        <h4>Item comment(s)</h4>
+        {% if comments %}
+
+        {% for comment in comments %}
+        <div class="card bg-dark mb-3">
+           
+            <div class="card-header">
+                <strong>{{ comment.user.username }} </strong>
+                <div class="text-muted small">
+                    commented on {{ comment.cm_date }}
+                </div>       
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">{{ comment.headline }}</h5>
+              <p class="card-text"> {{ comment.message }}</p>
+            </div>
+            
+        </div>
+        {% endfor %}
+
+        {% else %}
+        <p>No comments so far.</p>
+        {% endif %}
+    </div> 
+
+    <script src="{% static 'auctions/watchlist.js' %}"></script>
+
+    <script src="{% static 'auctions/comment.js' %}"></script>
+        
+{% endblock %}
+

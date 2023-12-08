@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Iterate over the comments data and create HTML for each comment
             comments.forEach(comment => {
                 var commentCard = document.createElement('div');
-                commentCard.className = 'card bg-dark mb-3';
+                commentCard.className = 'card mb-3';
                 commentCard.innerHTML = `
                     <div class="card-header">
                         <strong>${comment.username}</strong>
@@ -69,7 +69,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         </div>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">${comment.headline}</h5>
                         <p class="card-text">${comment.message}</p>
                     </div>
                 `;

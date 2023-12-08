@@ -21,6 +21,10 @@ body {
   display:inline-block;
 }
 
+.suppress-width {
+  width:auto;
+}
+
 .form-control {
   width: 70%;
 }
@@ -62,26 +66,6 @@ body {
 
 .listing_divider{
   max-width: 1150px;
-}
-
-.dark {
-  background-color: rgb(59, 59, 59);
-  color: white;
-}
-
-.dark:hover {
-  background-color: rgb(69, 69, 69);
-  color: white;
-}
-
-.categories {
-  background-color: rgb(54, 54, 54);
-  color: orange;
-}
-
-.categories:hover {
-  background-color: rgb(69, 69, 69);
-  color: darkorange;
 }
 
 .watchlist-icon {

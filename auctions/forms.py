@@ -35,14 +35,8 @@ class NewCommentForm(ModelForm):
     # specify the name of model to use
     class Meta:
         model = Comment
-        fields = ["headline", "message"]
+        fields = ["message"]
         widgets = {
-            "headline": forms.TextInput(
-                attrs={
-                        "placeholder": "Enter headline",
-                        "class": "form-control"
-                    }
-            ),
             "message": forms.Textarea(
                 attrs={
                         "placeholder": "Enter your comment...",

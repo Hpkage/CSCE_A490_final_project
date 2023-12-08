@@ -13,11 +13,8 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
     </head>
     <body>
-
-
-
-        <header>
-            <h1>Browse Anime</h1>
+        <header class="bg-dark">
+            <h1 style="color:white;">Browse Anime</h1>
             <nav class="navbar">
                 <span>
                     <a class="btn btn-primary" href="{% url 'index' %}">Anime</a>
@@ -36,7 +33,7 @@
                         <button class="btn btn-success" type="submit">Search</button>
                     </form>
                 </div>
-                <span>
+                <span style="color:white;">
                     {% if user.is_authenticated %}
                         Welcome <strong>{{ user.username }}!</strong>
                         <a class="btn btn-info" href="{% url 'logout' %}">Log Out</a>

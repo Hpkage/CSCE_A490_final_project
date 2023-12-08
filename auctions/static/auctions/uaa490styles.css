@@ -4,6 +4,10 @@ nav {
   padding: 14px 18px;
 }
 
+.btn-primary {
+  border-radius: 25px;
+}
+
 /* body > header { 
   padding: 0 0.5rem .75rem 0.5rem;
 } */
@@ -19,6 +23,7 @@ body {
   width:auto;
   height:auto;
   display:inline-block;
+  
 }
 
 .form-control {
@@ -48,6 +53,7 @@ body {
 }
 
 .button_group{
+
  padding-left: 0;
  max-width: 1920px
 }

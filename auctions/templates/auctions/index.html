@@ -1,24 +1,43 @@
 <!DOCTYPE html>
 {% extends "auctions/layout.html" %}
+
 {% load static %}
 
 {% block body %}
+<style>
+    body {
+        background: url('{% static "auctions/images/mini_totoro_footer.png" %}');
+        height: 200px;
+        min-height: 100vh; 
+        background-size: cover; 
+        background-opacity: 0.7;
+        background-position: center; 
+        background-repeat: no-repeat; 
+    }
+    
+    
+    
+</style>
     <main>
         <div id="results-container">
-        <!-- Anime search results will be dynamically added here -->
-        <div class="anime-card">
-            <div class="image-container">
-            <img src="https://placehold.it/150x250" alt="Anime Image" />
-            <div class="button-container">
-                <button class="save-button">Save</button>
+            <!-- Anime search results will be dynamically added here -->
+            <div class="anime-card">
+                <div class="image-container">
+                    <img src="https://placehold.it/150x250" alt="Anime Image" />
+                    <div class="button-container">
+                        <button class="save-button">Save</button>
+                    </div>
+                </div>
+                <h3>Empty</h3>
             </div>
-            </div>
-            <h3>Empty</h3>
-        </div>
         </div>
     </main>
-    <!-- CSS styling -->
-    <style>
+    {% comment %} {% include "auctions/footer.html" %} {% endcomment %}
+   
+
+
+<!-- CSS styling -->
+<style>
     #results-container {
         display: flex;
         flex-wrap: wrap;
@@ -115,6 +134,8 @@
         border-radius: 4px;
         cursor: pointer;
     }
-    </style>
-    <script src="{% static 'auctions/app.js' %}"></script>
+</style>
+
+<script src="{% static 'auctions/app.js' %}"></script>
+{% include "auctions/footer.html" %}
 {% endblock %}

@@ -6,11 +6,10 @@
 
 {% block body %}
     
-
     <form action="{% url 'create' %}" method="post">
         {% csrf_token %}
         <div class="container py-3">
-            <h2>Post Something</h2>
+            <h2>Make A Post</h2>
             <p>Please fill the form to create a post.</p>
             
             {% for field in form %}
@@ -29,5 +28,5 @@
               </div>
         </div>     
     </form>
-    
+    {% include "auctions/footer.html" %}
 {% endblock %}

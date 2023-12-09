@@ -29,5 +29,11 @@
         {% endfor %}
     </div>
 
+<<<<<<< HEAD
+    <script src="{% static 'auctions/watchlist.js' %}"></script>
     {% include "auctions/footer.html" %}
 {% endblock %}
+=======
+    
+{% endblock %}
+>>>>>>> origin/hiro_dev

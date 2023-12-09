@@ -4,29 +4,33 @@
 {% block body %}
 
 <div class="container">
-    <h2>My Watchlist</h2>
+    <h2>Favorites</h2>
 
     {% if watchlist %}
-    <div><p>Your watchlist has {{ watchingNum }} items.</p></div>
+    <div><p>You have {{ watchingNum }} liked items.</p></div>
 
     <table class="table">
-        <thead class="thead-dark">
+        <thead class="thead">
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Auction listing ID</th>
+            <th scope="col">Images</th>
             <th scope="col">Title</th>
-            <th scope="col">Watchlist</th>
+            <th scope="col">Liked</th>
           </tr>
         </thead>
         <tbody>
         {% for auction in auctions %}
         
-          <tr class="dark">
-            <td scope="row">{{ forloop.counter }}</th>
-            <td>{{ auction.id }}</td>
+          <tr>
+            <td scope="row">{{ forloop.counter }}</td>
+            <td>
+              <a style="width:100px; height: 100px; display:flex;" href="{% url 'listing' auction.id %}">
+                <img src="{{ auction.image }}" alt="auction.title"> 
+              </a>
+            </td>
             <td><a href="{% url 'listing' auction.id %}" style="color: inherit;">{{ auction.title }}</a></td>
             <td>
-              <!-- Watchlist Icon -->
+              <!-- Favorite Icon -->
               {% if auction in user.watchlist.auctions.all %}
                   <i id="watchlist-icon-{{ auction.id }}" class="fas fa-heart watchlist-icon in-watchlist" onclick="toggleWatchlist(this)" data-auction-id="{{ auction.id }}" style="color: red;"></i>
               {% else %}
@@ -40,12 +44,12 @@
 
       {% else %}
 
-      <p>No items in your watchlist.</p>
+      <p>No liked posts for now.</p>
 
       {% endif %}
       
 </div>
 
 <script src="{% static 'auctions/watchlist.js' %}"></script>
-    
+{% include "auctions/footer.html" %}
 {% endblock %}

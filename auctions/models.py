@@ -3,6 +3,7 @@ from django.db import models
 
 
 class User(AbstractUser):
+    profile_pic = models.ImageField(null=True, blank=True)
     pass
 
     def __str__(self):
@@ -16,7 +17,7 @@ class User(AbstractUser):
 class Auction(models.Model):
     title = models.CharField(max_length=64)
     description = models.TextField(max_length=512)
-    image = models.ImageField(upload_to= 'images/')
+    image = models.ImageField(upload_to= 'auctions/static/images/')
     seller = models.ForeignKey(User, on_delete=models.CASCADE, related_name="auction_seller")
     creation_date = models.DateTimeField(auto_now_add=True)
     update_date = models.DateTimeField(auto_now=True, null=True)
@@ -31,7 +32,6 @@ class Auction(models.Model):
 # define the model of a comment
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_comments")
-    headline = models.CharField(max_length=64)
     message = models.TextField(blank=False)
     cm_date = models.DateTimeField(auto_now_add=True)
     auction = models.ForeignKey(Auction, on_delete=models.CASCADE, related_name="auction_comments")

@@ -59,10 +59,10 @@ def register(request):
             return render(request, "auctions/register.html", {
                 "message": "Passwords must match."
             })
-
+        profile_pic = request.POST["profile_pic"]
         # Attempt to create new user
         try:
-            user = User.objects.create_user(username, email, password)
+            user = User.objects.create_user(username, email, password, profile_pic)
             user.save()
         except IntegrityError:
             return render(request, "auctions/register.html", {
@@ -276,7 +276,6 @@ def get_comments(request, auction_id):
             {
                 'username': comment.user.username,
                 'cm_date': comment.cm_date.strftime('%Y-%m-%d %H:%M:%S'),
-                'headline': comment.headline,
                 'message': comment.message,
             }
             for comment in comments

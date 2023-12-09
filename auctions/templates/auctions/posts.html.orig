@@ -1,0 +1,39 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+      
+    <div class="container py-3">
+        {% for auction in auctions %}
+        <div class="col" style="min-width:400px; max-width:700px; margin-left:auto; margin-right:auto; display:block;">
+            <div class="col py-3 border light bg-dark">
+                <strong style="color:white;">{{ auction.seller.username }}</strong>
+                <a href="{% url 'listing' auction.id %}">
+                    <img src="{{ auction.image }}" alt="auction.title"> 
+                </a>
+            </div>
+            <div class="col py-3 border light">
+                <h4><a href="{% url 'listing' auction.id %}" style="color: inherit;"><strong>{{ auction.title }}</strong></a></h4>
+                <!-- Watchlist Icon -->
+                {% if auction in user.watchlist.auctions.all %}
+                    <i id="watchlist-icon-{{ auction.id }}" class="fas fa-heart watchlist-icon in-watchlist" onclick="toggleWatchlist(this)" data-auction-id="{{ auction.id }}" style="color: red;"></i>
+                {% else %}
+                    <i id="watchlist-icon-{{ auction.id }}" class="fas fa-heart-broken watchlist-icon" onclick="toggleWatchlist(this)" data-auction-id="{{ auction.id }}" style="color: red;"></i>
+                {% endif %}
+                <div>Description:</div>
+                <div><p>{{ auction.description }}</p></div>
+                <div>Posted on:</div>
+                <div><p>{{ auction.creation_date }}</p></div>
+            </div> 
+        </div>
+            
+        {% endfor %}
+    </div>
+
+<<<<<<< HEAD
+    <script src="{% static 'auctions/watchlist.js' %}"></script>
+    {% include "auctions/footer.html" %}
+{% endblock %}
+=======
+    
+{% endblock %}
+>>>>>>> origin/hiro_dev

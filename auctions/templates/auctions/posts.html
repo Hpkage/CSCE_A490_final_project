@@ -4,11 +4,14 @@
       
     <div class="container py-3">
         {% for auction in auctions %}
-        <div class="row" style="min-width:400px; max-width:700px; margin-left:auto; margin-right:auto; display:block;">
-            <div class="col py-3 border light">
+        <div class="col" style="min-width:400px; max-width:700px; margin-left:auto; margin-right:auto; display:block;">
+            <div class="col py-3 border light bg-dark">
+                <strong style="color:white;">{{ auction.seller.username }}</strong>
                 <a href="{% url 'listing' auction.id %}">
                     <img src="{{ auction.image }}" alt="auction.title"> 
                 </a>
+            </div>
+            <div class="col py-3 border light">
                 <h4><a href="{% url 'listing' auction.id %}" style="color: inherit;"><strong>{{ auction.title }}</strong></a></h4>
                 <!-- Watchlist Icon -->
                 {% if auction in user.watchlist.auctions.all %}

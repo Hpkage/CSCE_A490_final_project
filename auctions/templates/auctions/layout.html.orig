@@ -12,7 +12,6 @@
 </head>
 <body>
 
-<<<<<<< HEAD
 <header>
     <nav class="navbar">
         <span>
@@ -28,6 +27,7 @@
                 <div class="search-icon">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
+<<<<<<< HEAD
                 <input class="search-bar" 
                        type="text"
                        id="search-input"
@@ -75,32 +75,10 @@
 <script src="https://kit.fontawesome.com/fc0ce45d47.js" crossorigin="anonymous"></script>
 </body>
 =======
-        <link rel="stylesheet" href="{% static 'auctions/uaa490styles.css' %}">   
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
-    </head>
-    <body>
-        <header>
-            <nav class="navbar">
                 <span>
-                    <a class="btn btn-primary" href="{% url 'index' %}">Anime</a>
-                    <a class="btn btn-primary" href="{% url 'posts' %}">Posts</a>
-                    <a class="btn btn-primary" href="{% url 'watchlist' %}">Likes</a>
-                    <a class="btn btn-primary" href="{% url 'create' %}">Post It</a>
-                    
-                </span>
-                <div class="search-input">
-                    <form id="search-form">
-                        <input class="search-bar"
-                        type="text"
-                        id="search-input"
-                        placeholder="Search for an anime..."
-                        />
-                        <button class="btn btn-success" type="submit">Search</button>
-                    </form>
-                </div>
-                <span style="color:white;">
                     {% if user.is_authenticated %}
                         Welcome <strong>{{ user.username }}!</strong>
+                        <img class="profile_pic" src="{{ request.user.profile_pic.url }}" alt="user.image">
                         <a class="btn btn-info" href="{% url 'logout' %}">Log Out</a>
                     {% else %}
                         <a class="btn btn-info" href="{% url 'login' %}">Log In</a>

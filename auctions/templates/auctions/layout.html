@@ -40,7 +40,9 @@
 
         <span>
             {% if user.is_authenticated %}
+            
             <div class="dropdown">
+                <img class="profile_pic" src="{{ request.user.profile_pic.url }}" alt="user.image">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Welcome <strong>{{ user.username }}!</strong>
                 </button>

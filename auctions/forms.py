@@ -24,7 +24,7 @@ class NewListingForm(ModelForm):
             ),
             "image": forms.FileInput(
                 attrs={
-                    "placeholder": "Browse",
+                    "placeholder": "Choose file",
                     }
                 ) 
         }

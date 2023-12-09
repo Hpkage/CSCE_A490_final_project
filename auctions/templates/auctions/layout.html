@@ -32,9 +32,10 @@
                         <button class="btn btn-success" type="submit">Search</button>
                     </form>
                 </div>
-                <span style="color:white;">
+                <span>
                     {% if user.is_authenticated %}
                         Welcome <strong>{{ user.username }}!</strong>
+                        <img class="profile_pic" src="{{ request.user.profile_pic.url }}" alt="user.image">
                         <a class="btn btn-info" href="{% url 'logout' %}">Log Out</a>
                     {% else %}
                         <a class="btn btn-info" href="{% url 'login' %}">Log In</a>

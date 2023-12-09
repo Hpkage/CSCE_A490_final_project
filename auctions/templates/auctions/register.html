@@ -10,6 +10,9 @@
 
     <form action="{% url 'register' %}" method="post">
         {% csrf_token %}
+
+        {{ form.user }}
+
         <div class="form-group">
             <input class="form-control" autofocus type="text" name="username" placeholder="Username">
         </div>
@@ -22,8 +25,12 @@
         <div class="form-group">
             <input class="form-control" type="password" name="confirmation" placeholder="Confirm Password">
         </div>
-        <input type="submit" value="Register">
-    </form>
+        <div class="form-group">
+            <input type="button" name="profile_pic" value="Choose file">
+        </div>
+        <form>
+            <input type="submit" value="Register">
+        </form>
 
     <p>
         Already have an account? <a href="{% url 'login' %}">Log In here.</a>

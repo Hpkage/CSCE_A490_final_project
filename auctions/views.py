@@ -276,7 +276,6 @@ def get_comments(request, auction_id):
             {
                 'username': comment.user.username,
                 'cm_date': comment.cm_date.strftime('%Y-%m-%d %H:%M:%S'),
-                'headline': comment.headline,
                 'message': comment.message,
             }
             for comment in comments

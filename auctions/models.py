@@ -31,7 +31,6 @@ class Auction(models.Model):
 # define the model of a comment
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_comments")
-    headline = models.CharField(max_length=64)
     message = models.TextField(blank=False)
     cm_date = models.DateTimeField(auto_now_add=True)
     auction = models.ForeignKey(Auction, on_delete=models.CASCADE, related_name="auction_comments")

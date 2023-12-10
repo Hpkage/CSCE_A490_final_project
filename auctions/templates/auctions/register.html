@@ -25,15 +25,20 @@
         <div class="form-group">
             <input class="form-control" type="password" name="confirmation" placeholder="Confirm Password">
         </div>
-        <div class="form-group">
-            <input type="button" name="profile_pic" value="Choose file">
-        </div>
+
         <form>
             <div class="form-group">
                 <input type="file" name="profile_pic" value="Choose file">
             </div>
-            <input type="submit" value="Register">
+
+            <div class = register>
+                <input class ="btn btn-secondary" type="submit" value="Register">
+            </div>
         </form>
+        
+        
+        
+        
 
     <p>
         Already have an account? <a href="{% url 'login' %}">Log In here.</a>

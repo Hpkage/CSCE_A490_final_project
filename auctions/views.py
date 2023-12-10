@@ -62,7 +62,7 @@ def register(request):
         profile_pic = request.POST["profile_pic"]
         # Attempt to create new user
         try:
-            user = User.objects.create_user(username, email, password, profile_pic)
+            user = User.objects.create_user(username, email, password, profile_pic=profile_pic)
             user.save()
         except IntegrityError:
             return render(request, "auctions/register.html", {

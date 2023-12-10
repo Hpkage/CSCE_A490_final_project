@@ -6,7 +6,7 @@
 
 {% block body %}
     
-    <form action="{% url 'create' %}" method="post">
+    <form action="{% url 'create' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="container py-3">
             <h2>Make A Post</h2>
@@ -28,5 +28,6 @@
               </div>
         </div>     
     </form>
+    
     {% include "auctions/footer.html" %}
 {% endblock %}

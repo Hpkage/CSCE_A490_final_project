@@ -8,7 +8,7 @@
             <div class="col py-3 border light bg-dark">
                 <strong style="color:white;">{{ auction.seller.username }}</strong>
                 <a href="{% url 'listing' auction.id %}">
-                    <img src="{{ auction.image }}" alt="auction.title"> 
+                    <img src="{{ auction.image.url }}" alt="auction.title"> 
                 </a>
             </div>
             <div class="col py-3 border light">

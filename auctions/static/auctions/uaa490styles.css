@@ -4,7 +4,7 @@ nav {
   padding: 14px 18px;
 }
 
-.btn-success, .btn-info {
+.navbar .btn-success, .btn-info {
   border-radius: 25px;
   height: 45px;
   width: 100px;
@@ -12,6 +12,7 @@ nav {
   background-color: #9fc47d;
 
 }
+
 
 
 /* body > header { 

@@ -25,7 +25,7 @@
             <td scope="row">{{ forloop.counter }}</td>
             <td>
               <a style="width:100px; height: 100px; display:flex;" href="{% url 'listing' auction.id %}">
-                <img src="{{ auction.image }}" alt="auction.title"> 
+                <img src="{{ auction.image.url }}" alt="auction.title"> 
               </a>
             </td>
             <td><a href="{% url 'listing' auction.id %}" style="color: inherit;">{{ auction.title }}</a></td>

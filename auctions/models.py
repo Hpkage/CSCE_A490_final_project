@@ -17,7 +17,7 @@ class User(AbstractUser):
 class Auction(models.Model):
     title = models.CharField(max_length=64)
     description = models.TextField(max_length=512)
-    image = models.ImageField(upload_to= 'auctions/static/images/')
+    image = models.ImageField(upload_to='auctions\\static\\images\\')
     seller = models.ForeignKey(User, on_delete=models.CASCADE, related_name="auction_seller")
     creation_date = models.DateTimeField(auto_now_add=True)
     update_date = models.DateTimeField(auto_now=True, null=True)

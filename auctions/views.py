@@ -286,4 +286,9 @@ def get_comments(request, auction_id):
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
     
+
+@login_required(login_url="login")
+def accountSettings(request):
+
+    return render(request, 'auctions/account_settings.html')
     

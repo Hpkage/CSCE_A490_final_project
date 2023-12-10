@@ -1,0 +1,24 @@
+{% extends "auctions/layout.html" %}
+
+{% block main %}
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card card-body">
+                <a class="btn btn-warning" href="{% url 'index' %}">&#8592; Back to Home</a>
+                <hr>
+                <h3 style="text-align:center">Profile Settings</h3>
+                <hr>
+                <img class="profile_setting" src="{{ request.user.profile_pic.url }}">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card card-body">
+                <form method="POST" actions="">
+                    <input class="btn btn-primary" type="submit" name="Update Information">
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

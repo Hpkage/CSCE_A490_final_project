@@ -3,7 +3,12 @@ from django.db import models
 
 
 class User(AbstractUser):
-    profile_pic = models.ImageField(default="auctions/static/images/default-profile.jpg", null=True, blank=True)
+    profile_pic = models.ImageField(default="default-profile.jpg",
+                                    null=True,
+                                    blank=True,
+                                    upload_to='auctions/static/images/'
+                                    
+                                    )
 
     def __str__(self):
         return f"User id: {self.id} | Username: {self.username}"

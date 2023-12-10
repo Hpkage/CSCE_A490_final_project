@@ -46,6 +46,15 @@ body {
   height:50px;
 }
 
+.profile_setting {
+  width:250px;
+  height:250px;
+  border-radius:50%;
+  margin-left:auto;
+  margin-right:auto;
+  display:block;
+}
+
 form input {
   flex: 1;
   border:none;

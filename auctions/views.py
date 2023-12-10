@@ -47,6 +47,7 @@ def logout_view(request):
     return HttpResponseRedirect(reverse("index"))
 
 
+
 def register(request):
     if request.method == "POST":
         username = request.POST["username"]
@@ -284,5 +285,10 @@ def get_comments(request, auction_id):
         return JsonResponse(comments_data, safe=False, content_type='application/json')
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
+    
+    
+@login_required(login_url="login")
+def accountSettings(request):
+    return render(request, 'auctions/account_settings.html')
     
     

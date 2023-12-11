@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 
-from .models import User, Auction, Comment, Watchlist
+from .models import Auction, Comment, Watchlist
 from .forms import NewUser, NewCommentForm, NewListingForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -51,9 +51,6 @@ def register(request):
     if request.method == "POST":
         form = NewUser(request.POST, request.FILES)
         
-        username = request.POST["username"]
-        email = request.POST["email"]
-        profile_pic = request.POST["profile_pic"]
         # Ensure password matches confirmation
         password = request.POST["password"]
         confirmation = request.POST["confirmation"]
@@ -64,8 +61,6 @@ def register(request):
 
         # Attempt to create new user
         try:
-            #user = User.objects.create_user(username, email, password, profile_pic=profile_pic)
-            #user.save()
             if form.is_valid():
                 new_user = form.saveIt()
         except IntegrityError:
@@ -299,15 +294,18 @@ def accountSettings(request):
         form = NewUser(request.POST, request.FILES, instance=user)
         if form.is_valid():
             user = form.saveIt()
-            messages.success(request, 'Successfully updated profile settings.')
+            messages.success(request, 'Updated profile settings.')
             login(request, user)
             return render(request, 'auctions/account_settings.html', {
                 "form": form,
             })
             
-        messages.error(request, 'Passwords do not match.')
+        messages.warning(request, 'Passwords do not match.')
           
     return render(request, 'auctions/account_settings.html', {
         "form": form,
     })
-    
+
+
+def aboutUs(request):
+    return render(request, 'auctions/about_us.html')

@@ -19,6 +19,7 @@ urlpatterns = [
     path("watchlist/", views.watchlist, name="watchlist"),
     path("listing/<int:auction_id>/get_comments/", views.get_comments, name="get_comments"),
     path("account_settings/", views.accountSettings, name="account_settings"),
+    path('about_us/', views.aboutUs, name="about_us"),
 ]
 
 # Serve media files during development

@@ -3,7 +3,7 @@ from django.db import models
 
 
 class User(AbstractUser):
-    profile_pic = models.ImageField(default="default-profile.jpg",
+    profile_pic = models.ImageField(default="istockphoto-1337144146-612x612.jpg",
                                     null=True,
                                     blank=True,
                                     upload_to='auctions/static/images/'

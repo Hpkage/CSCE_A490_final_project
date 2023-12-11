@@ -22,7 +22,12 @@
                                 <i id="watchlist-icon-{{ auction.id }}" class="fa-regular fa-bookmark watchlist-icon"  onclick="toggleWatchlist(this)" data-auction-id="{{ auction.id }}" style="color: red;"></i>
                             {% endif %}
                         </div>                                             
-                        <strong style="color:black;"><img class="feed_profile_pic" src="{{ request.user.profile_pic.url }}" alt="user.image"> {{ auction.seller.username }}</strong>
+                        <strong style="color:black;"><img style="  border-radius:50%;
+                            width:30px;
+                            min-width:30px;
+                            max-width:30px;
+                            height:30px;
+                            display:inline-block;" class="feed_profile_pic" src="{{ auction.seller.profile_pic.url }}" alt="user.image"> {{ auction.seller.username }}</strong>
                         <div style="color: black; font-size: 20px">Description:</div>
                         <div><p style="color: black; font-size: 20px;">{{ auction.description }}</p></div>
                         <div style="color: gray;">Posted on:</div>

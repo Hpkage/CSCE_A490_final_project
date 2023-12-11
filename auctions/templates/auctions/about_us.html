@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% extends "auctions/layout.html" %}
+{% load static %}
+
+{% block body %}
+<link rel="stylesheet" href="{% static 'auctions/about_us.css' %}">
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+<div class="container">
+    <div class="row align-items-center">
+        <div class="col">
+            <img class="saitama" src="{% static 'auctions/images/saitama-one-punch-man-anime-manga-hero-funny-19a804669dcd89e18a33059aea4cd06a.png' %}" >
+        </div>
+        <div class="col">
+            <div class="box">
+                <h2 class="title"> About Us </h2>
+                <div class = "message">
+                    <pre> 
+Thank you for visiting our website, we hope you enjoyed!
+On a journey to become the <strong>Hokage</strong>; we're all going to make it!!!
+
+Love,
+- HP and YS.
+                    </pre>
+                    <div class="youji-links">
+                        Youji:
+                        <a href="https://www.linkedin.com/in/youji-seto/" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </a>
+                        ||
+                        <a href = "https://github.com/yjseto" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-brands fa-github"> </i>
+                        </a>
+                    </div>
+
+                    <div class="youji-links">
+                        Hiromi:
+                        <a href = "https://github.com/Hpkage" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>   
+        </div>
+    </div>
+</div>
+
+{% include "auctions/footer.html" %}
+{% endblock %}

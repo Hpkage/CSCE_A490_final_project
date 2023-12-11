@@ -20,31 +20,24 @@
             <div class="col-md-6 my-3">
                 <!-- Header with title and Like icon -->
                 <div class="header-section mb-3">
-                    <h3 class="auction-title">{{ auction.title }}</h3>
-                    {% if user.is_authenticated %}
-                        <!-- Like Icon -->
-                        {% if auction in user.watchlist.auctions.all %}
-                            <i id="watchlist-icon-{{ auction.id }}" class="fa-solid fa-bookmark watchlist-icon in-watchlist" onclick="toggleWatchlist(this)" data-auction-id="{{ auction.id }}" style="color: red;"></i>
-                        {% else %}
-                            <i id="watchlist-icon-{{ auction.id }}" class="fa-regular fa-bookmark watchlist-icon" onclick="toggleWatchlist(this)" data-auction-id="{{ auction.id }}" style="color: red;"></i>
-                        {% endif %}
-                    {% endif %}
+                    <h3 class="auction-title" style = "font-size: 30px;">{{ auction.title }}</h3>
+                    <div><p>Posted by: <strong> {{ auction.seller.username }} </strong> <small>{{ auction.creation_date }}</small></p></div>
                 </div>
 
-                <!-- watching badge -->
-                {% if user.is_authenticated %}
-                    {% if watching %}
-                    <h5><span class="badge" style="background-color:lightgray;">Liked</span></h5>
-                    {% endif %}
-                {% endif %}
 
                 <div>Description:</div>
-                <div><p>{{ auction.description }}</p></div>
-                <div>Creator:</div>
-                <div><p>{{ auction.seller.username }}</p></div>
-                <div>Posted on:</div>
-                <div><p><small>{{ auction.creation_date }}</small></p></div>
-                <div>Updated on:</div>
+                <div><p style = "font-size: 25px;">{{ auction.description }}</p></div>
+                {% comment %} <div>Creator:</div> {% endcomment %}
+                {% if user.is_authenticated %}
+                <!-- Like Icon -->
+                {% if auction in user.watchlist.auctions.all %}
+                    <i id="watchlist-icon-{{ auction.id }}" class="fa-solid fa-bookmark watchlist-icon in-watchlist" onclick="toggleWatchlist(this)" data-auction-id="{{ auction.id }}" style="color: red;"></i>
+                {% else %}
+                    <i id="watchlist-icon-{{ auction.id }}" class="fa-regular fa-bookmark watchlist-icon" onclick="toggleWatchlist(this)" data-auction-id="{{ auction.id }}" style="color: red;"></i>
+                {% endif %}
+            {% endif %}
+                
+                {% comment %} <div>Updated on:</div> {% endcomment %}
             </div>
         </div>
     </div>

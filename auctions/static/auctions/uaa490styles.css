@@ -28,7 +28,15 @@ body {
   flex-grow: 1; /* Allow the search input to grow and fill the available space */
   padding: 8px;
 
+.profile_setting {
+  width:250px;
+  height:250px;
+  border-radius:50%;
+  margin-left:auto;
+  margin-right:auto;
+  display:block;
 }
+
 .search-bar {
   border-radius: 16px;
   min-width: 10px;

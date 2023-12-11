@@ -6,6 +6,7 @@ from django.urls import reverse
 
 from .models import User, Auction, Comment, Watchlist
 from .forms import NewCommentForm, NewListingForm
+from django.contrib.auth import login as auth_login
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
@@ -52,6 +53,7 @@ def register(request):
     if request.method == "POST":
         username = request.POST["username"]
         email = request.POST["email"]
+        profile_pic = request.POST["profile_pic"]
 
         # Ensure password matches confirmation
         password = request.POST["password"]
@@ -60,7 +62,6 @@ def register(request):
             return render(request, "auctions/register.html", {
                 "message": "Passwords must match."
             })
-        profile_pic = request.POST["profile_pic"]
         # Attempt to create new user
         try:
             user = User.objects.create_user(username, email, password, profile_pic=profile_pic)
@@ -291,4 +292,9 @@ def get_comments(request, auction_id):
 def accountSettings(request):
     return render(request, 'auctions/account_settings.html')
     
+
+@login_required(login_url="login")
+def accountSettings(request):
+
+    return render(request, 'auctions/account_settings.html')
     

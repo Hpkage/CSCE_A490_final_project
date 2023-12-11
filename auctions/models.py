@@ -11,7 +11,6 @@ class User(AbstractUser):
                                     )
 
 
-    pass
 
     def __str__(self):
         return f"User id: {self.id} | Username: {self.username}"

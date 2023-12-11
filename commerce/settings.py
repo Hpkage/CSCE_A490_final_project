@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 from django.contrib import messages
+from google.oauth2 import service_account
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -152,3 +154,14 @@ MESSAGE_TAG = {
     messages.WARNING: 'alert-warning',
     messages.ERROR: 'alert-danger',
 }
+
+
+# Google Cloud Storage settings
+GS_BUCKET_NAME = '490_hiro_youji_bucket'
+GS_PROJECT_ID = 'final-407808'
+GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
+    os.path.join(BASE_DIR, 'C:\\Users\\setoy\\Downloads\\final-407808-32a7974508ef.json'),
+)
+
+# Static files (CSS, JavaScript, images)
+STATIC_URL = 'https://storage.googleapis.com/{}/'.format(GS_BUCKET_NAME)

@@ -160,8 +160,9 @@ MESSAGE_TAG = {
 GS_BUCKET_NAME = '490_hiro_youji_bucket'
 GS_PROJECT_ID = 'final-407808'
 GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
-    os.path.join(BASE_DIR, 'auctions\\static\\final-407808-32a7974508ef.json'),
+    os.path.join(BASE_DIR, 'static', 'final-407808-32a7974508ef.json'),
 )
 
 # Static files (CSS, JavaScript, images)
 STATIC_URL = 'https://storage.googleapis.com/{}/'.format(GS_BUCKET_NAME)
+

@@ -25,11 +25,22 @@
         <div class="form-group">
             <input class="form-control" type="password" name="confirmation" placeholder="Confirm Password">
         </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/hiro_dev
         <form>
+            <div class="form-group">
+                <input type="file" name="profile_pic" value="Choose file">
+            </div>
+<<<<<<< HEAD
+
             <div class = register>
                 <input class ="btn btn-secondary" type="submit" value="Register">
             </div>
+=======
+            <input type="submit" value="Register">
+>>>>>>> origin/hiro_dev
         </form>
         
         

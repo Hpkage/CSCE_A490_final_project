@@ -1,0 +1,16 @@
+
+.box {
+    border-style: solid;
+    border-color: black;
+}
+
+.title {
+text-align: center;
+}
+
+.message {
+    padding: 15px;
+    font: roboto;
+    font-size: 25px;
+}
+

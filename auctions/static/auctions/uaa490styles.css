@@ -27,8 +27,17 @@ body {
 .search-input {
   flex-grow: 1; /* Allow the search input to grow and fill the available space */
   padding: 8px;
-
 }
+
+.profile_setting {
+  width:250px;
+  height:250px;
+  border-radius:50%;
+  margin-left:auto;
+  margin-right:auto;
+  display:block;
+}
+
 .search-bar {
   border-radius: 16px;
   min-width: 10px;
@@ -37,6 +46,15 @@ body {
   padding: 8px; /* Add padding for spacing inside the search bar */
   box-sizing: border-box; /* Include padding and border in the total width/height */
   background: #efefef;
+  display:inline-block;
+}
+
+.feed_profile_pic {
+  border-radius:50%;
+  width:30px;
+  min-width:30px;
+  max-width:30px;
+  height:30px;
   display:inline-block;
 }
 

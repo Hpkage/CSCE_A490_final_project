@@ -14,7 +14,28 @@
         </div>
         <div class="col-md-6">
             <div class="card card-body">
-                <form method="POST" actions="">
+                <form method="POST" actions="" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <p>Username:</p>
+                        {{ form.username }}
+                    </div>
+                    <div class="form-group">
+                        <p>Email:</p>
+                        {{ form.email }}
+                    </div>
+                    <div class="form-group">
+                        <p>Password:</p>
+                        {{ form.password }}
+                    </div>
+                    <div class="form-group">
+                        <p>Confirm Password:</p>
+                        {{ form.confirmation }}
+                    </div>
+                    <div class="form-group">
+                        <p>Profile Picture:</p>
+                        {{ form.profile_pic }}
+                    </div>
                     <input class="btn btn-primary" type="submit" name="Update Information">
                 </form>
             </div>

@@ -12,66 +12,102 @@
 </head>
 <body>
 
-<header>
-    <nav class="navbar">
-        <span>
-            <a class="logo" href="{% url 'index' %}"> <img src="{% static 'auctions/images/favpng_drawing-ghibli-museum-studio-ghibli-clip-art.png' %}" alt="logo" width="48" height="48"> </a>
-            <a class="btn btn-success" href="{% url 'index' %}">Anime</a>
-            <a class="btn btn-success" href="{% url 'posts' %}">Feed</a>
-            <a class="btn btn-success" href="{% url 'watchlist' %}">Saved</a>
-            <a class="btn btn-success" href="{% url 'create' %}">Post It</a>
-        </span>
-
-        <div class="search-input">
-            <form id="search-form">
-                <div class="search-icon">
-                    <i class="fas fa-magnifying-glass"></i>
-                </div>
-                <input class="search-bar" 
-                       type="text"
-                       id="search-input"
-                       placeholder="Search for an anime..."
-                />
-                <!-- <button class="btn btn-success" type="submit">Search</button> -->
-            </form>
-        </div>
-
+    <header>
         
-
-        <span>
-            {% if user.is_authenticated %}
-            
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="profile_pic" src="{{ request.user.profile_pic.url }}" alt="user.image" >
-                    Welcome <strong>{{ user.username }}!</strong>
-                </button>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="{% url 'account_settings' %}"> Profile </a>
-                    <a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>
-                </div>
+        <nav class="navbar">
+            {% comment %} <ul class="nav nav-pills">
+                <li class="nav-item-image">
+                    <a class="logo" href="{% url 'index' %}"><img src="{% static 'auctions/images/favpng_drawing-ghibli-museum-studio-ghibli-clip-art.png' %}" alt="logo" width="48" height="48"></a>
+                </li>
+                <li class="nav-item {% if request.path == '/' %}active{% endif %}">
+                    <a class="nav-link" aria-current="page" href="#">Active</a>
+                </li>
+                <li class="nav-item {% if request.path == '/anime/' %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'index' %}">Anime</a>
+                </li>
+                <li class="nav-item {% if request.path == '/feed/' %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'posts' %}">Feed</a>
+                </li>
+                <li class="nav-item {% if request.path == '/favorites/' %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'watchlist' %}">Favorites</a>
+                </li>
+                <li class="nav-item {% if request.path == '/post/' %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'create' %}">Post It</a>
+                </li>
+            </ul> {% endcomment %}
+            <span>
+                <a class="logo" href="{% url 'index' %}"> <img src="{% static 'auctions/images/favpng_drawing-ghibli-museum-studio-ghibli-clip-art.png' %}" alt="logo" width="48" height="48"> </a>
+                <a class="btn btn-success" href="{% url 'index' %}">Anime</a>
+                <a class="btn btn-success" href="{% url 'posts' %}">Feed</a>
+                <a class="btn btn-success" href="{% url 'watchlist' %}">Favorites</a>
+                <a class="btn btn-success" href="{% url 'create' %}">Post It</a>
+                <a class="btn btn-success" href="{% url 'about_us' %}">About Us</a>
+            </span> 
+            <div class="search-input">
+                <form id="search-form">
+                    <div class="search-icon">
+                        <i class="fas fa-magnifying-glass"></i>
+                    </div>
+                    <input class="search-bar" 
+                    type="text"
+                    id="search-input"
+                    placeholder="Search for an anime..."
+                    />
+                    <!-- <button class="btn btn-success" type="submit">Search</button> -->
+                </form>
             </div>
-
-            {% else %}
-            <a class="btn btn-info" href="{% url 'login' %}">Log In</a>
-            <a class="btn btn-info" href="{% url 'register' %}">Register</a>
-            {% endif %}
-        </span>
-    </nav>
-</header>
-
-
-
-{% block body %}
-{% endblock %}
-
-<main>
-    {% block main %}
+            
+            
+            
+            <span>
+                {% if user.is_authenticated %}
+                
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img class="profile_pic" src="{{ request.user.profile_pic.url }}" alt="user.image" >
+                        Welcome <strong>{{ user.username }}!</strong>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="{% url 'account_settings' %}"> Profile </a>
+                        <a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>
+                    </div>
+                </div>
+                
+                {% else %}
+                <a class="btn btn-info" href="{% url 'login' %}">Log In</a>
+                <a class="btn btn-info" href="{% url 'register' %}">Register</a>
+                {% endif %}
+            </span>
+        </nav>
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}" id="msg" role="alert">
+                {{message}}
+            </div>
+            {% endfor %}
+        {% endif %}
+    </header>
+    
+    
+    
+    {% block body %}
     {% endblock %}
-</main>
-
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</body>
+    
+    <main>
+        {% block main %}
+        {% endblock %}
+    </main>
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="{% static 'auctions/navbar.js' %}"></script>
+    <script>
+        setTimeout(function() {
+            if ($('#msg').length > 0) {
+                $('#msg').remove();
+            }
+        }, 2000)
+    </script>
+</body>    
 </html>

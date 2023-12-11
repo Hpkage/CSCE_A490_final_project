@@ -4,7 +4,7 @@ nav {
   padding: 14px 18px;
 }
 
-.btn-success, .btn-info {
+.navbar .btn-success, .btn-info {
   border-radius: 25px;
   height: 45px;
   width: 100px;
@@ -12,6 +12,7 @@ nav {
   background-color: #9fc47d;
 
 }
+
 
 
 /* body > header { 
@@ -28,20 +29,18 @@ body {
   padding: 8px;
 
 <<<<<<< HEAD
+}
 =======
-.search-bar {
-  border-radius:16px; 
-  width:auto;
-  display:inline-block;
+.profile_setting {
+  width:250px;
+  height:250px;
+  border-radius:50%;
+  margin-left:auto;
+  margin-right:auto;
+  display:block;
 }
 
-.profile_pic {
-  border-radius:50%;
-  width:50px;
-  height:50px;
-  display:inline-block;
 >>>>>>> origin/hiro_dev
-}
 .search-bar {
   border-radius: 16px;
   min-width: 10px;
@@ -50,6 +49,22 @@ body {
   padding: 8px; /* Add padding for spacing inside the search bar */
   box-sizing: border-box; /* Include padding and border in the total width/height */
   background: #efefef;
+  display:inline-block;
+}
+
+.profile_pic {
+  border-radius:50%;
+  width:50px;
+  height:50px;
+}
+
+.profile_setting {
+  width:250px;
+  height:250px;
+  border-radius:50%;
+  margin-left:auto;
+  margin-right:auto;
+  display:block;
 }
 
 form input {
@@ -192,4 +207,9 @@ main {
   margin: 0 auto;
   padding-left: 30px;
   padding-right: 30px;
+}
+
+.post_description {
+  color: white;
+  background-color: #777;
 }

@@ -196,3 +196,8 @@ main {
   padding-left: 30px;
   padding-right: 30px;
 }
+
+.post_description {
+  color: white;
+  background-color: #777;
+}

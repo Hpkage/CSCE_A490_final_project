@@ -122,9 +122,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'yourdbname',
-        'USER': 'root',
-        'PASSWORD': 'Database$100',
+        'NAME': 'Anime_Website',
+        'USER': 'yseto',
+        'PASSWORD': 'pweijn',
         'HOST': 'localhost',
         'PORT': '3306',
         'OPTIONS': {

@@ -21,7 +21,8 @@
                 <!-- Header with title and Like icon -->
                 <div class="header-section mb-3">
                     <h3 class="auction-title" style = "font-size: 30px;">{{ auction.title }}</h3>
-                    <div><p>Posted by: <strong> {{ auction.seller.username }} </strong> <small>{{ auction.creation_date }}</small></p></div>
+                    <div><p><img class="feed_profile_pic" src="{{ request.user.profile_pic.url }}" alt="user.image"><strong> {{ auction.seller.username }} </strong></p></div>
+                    <p>Posted on: <small>{{ auction.creation_date }}</small></p>
                 </div>
 
 

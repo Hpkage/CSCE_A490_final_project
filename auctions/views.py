@@ -5,8 +5,7 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 
 from .models import User, Auction, Comment, Watchlist
-from .forms import NewCommentForm, NewListingForm
-from django.contrib.auth import login as auth_login
+from .forms import NewUser, NewCommentForm, NewListingForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
@@ -48,13 +47,13 @@ def logout_view(request):
     return HttpResponseRedirect(reverse("index"))
 
 
-
 def register(request):
     if request.method == "POST":
+        form = NewUser(request.POST, request.FILES)
+        
         username = request.POST["username"]
         email = request.POST["email"]
         profile_pic = request.POST["profile_pic"]
-
         # Ensure password matches confirmation
         password = request.POST["password"]
         confirmation = request.POST["confirmation"]
@@ -62,15 +61,18 @@ def register(request):
             return render(request, "auctions/register.html", {
                 "message": "Passwords must match."
             })
+
         # Attempt to create new user
         try:
-            user = User.objects.create_user(username, email, password, profile_pic=profile_pic)
-            user.save()
+            #user = User.objects.create_user(username, email, password, profile_pic=profile_pic)
+            #user.save()
+            if form.is_valid():
+                new_user = form.saveIt()
         except IntegrityError:
             return render(request, "auctions/register.html", {
                 "message": "Username already taken."
             })
-        login(request, user)
+        login(request, new_user)
         return HttpResponseRedirect(reverse("index"))
     else:
         return render(request, "auctions/register.html")
@@ -287,14 +289,25 @@ def get_comments(request, auction_id):
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
     
-    
-@login_required(login_url="login")
-def accountSettings(request):
-    return render(request, 'auctions/account_settings.html')
-    
 
 @login_required(login_url="login")
 def accountSettings(request):
-
-    return render(request, 'auctions/account_settings.html')
+    user = request.user
+    form = NewUser(instance=user)
+    
+    if request.method == "POST":
+        form = NewUser(request.POST, request.FILES, instance=user)
+        if form.is_valid():
+            user = form.saveIt()
+            messages.success(request, 'Successfully updated profile settings.')
+            login(request, user)
+            return render(request, 'auctions/account_settings.html', {
+                "form": form,
+            })
+            
+        messages.error(request, 'Passwords do not match.')
+          
+    return render(request, 'auctions/account_settings.html', {
+        "form": form,
+    })
     

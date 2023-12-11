@@ -30,13 +30,14 @@
             </td>
             <td><a href="{% url 'listing' auction.id %}" style="color: inherit;">{{ auction.title }}</a></td>
             <td>
-              <!-- Favorite Icon -->
+              <!-- Watchlist Icon -->
               {% if auction in user.watchlist.auctions.all %}
-                  <i id="watchlist-icon-{{ auction.id }}" class="fas fa-heart watchlist-icon in-watchlist" onclick="toggleWatchlist(this)" data-auction-id="{{ auction.id }}" style="color: red;"></i>
+                  <i id="watchlist-icon-{{ auction.id }}" class="fa-solid fa-bookmark watchlist-icon in-watchlist" onclick="toggleWatchlist(this)" data-auction-id="{{ auction.id }}" style="color: red;"></i>
               {% else %}
-                  <i id="watchlist-icon-{{ auction.id }}" class="fas fa-heart-broken watchlist-icon" onclick="toggleWatchlist(this)" data-auction-id="{{ auction.id }}" style="color: red;"></i>
+                  <i id="watchlist-icon-{{ auction.id }}" class="fa-regular fa-bookmark watchlist-icon" onclick="toggleWatchlist(this)" data-auction-id="{{ auction.id }}" style="color: red;"></i>
               {% endif %}
             </td>
+          
           </tr>
         {% endfor %}
         </tbody>

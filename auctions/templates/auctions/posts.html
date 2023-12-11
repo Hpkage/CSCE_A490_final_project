@@ -1,33 +1,55 @@
 {% extends "auctions/layout.html" %}
-
+{% load static %}
 {% block body %}
-      
-    <div class="container py-3">
-        {% for auction in auctions %}
-        <div class="col" style="min-width:400px; max-width:700px; margin-left:auto; margin-right:auto; display:block;">
-            <div class="col py-3 border light bg-dark">
-                <strong style="color:white;">{{ auction.seller.username }}</strong>
-                <a href="{% url 'listing' auction.id %}">
-                    <img src="{{ auction.image.url }}" alt="auction.title"> 
-                </a>
+<style>
+
+
+    {% comment %} body {
+        background: url('{% static "auctions/images/clipart1362139.png" %}');
+        height: 200px;
+        min-height: 100vh; 
+        background-size: cover; 
+        background-opacity: 0.7;
+        background-position: center; 
+        position: relative;
+    } {% endcomment %}
+
+    
+
+    
+</style>
+    <body>      
+        <div class="container py-3">
+            {% for auction in auctions %}
+            <div class="col" style="min-width:400px; max-width:700px; margin-left:auto; margin-right:auto; display:block;">
+                <div class="col py-3 border border-light bg-light">
+                    <h4><a href="{% url 'listing' auction.id %}" style="color: black;"><strong>{{ auction.title }}</strong></a></h4>
+                    <a href="{% url 'listing' auction.id %}">
+                        <img src="{{ auction.image.url }}" alt="auction.title"> 
+                    </a>
+                </div>
+                <div class = "post_description">
+                    <div class="col py-3 border dark" style ="background: #ffffff;">
+                        <!-- Watchlist Icon -->
+                        <div class="icons">
+                            {% if auction in user.watchlist.auctions.all %}
+                                <i id="watchlist-icon-{{ auction.id }}" class="fa-solid fa-bookmark watchlist-icon in-watchlist" onclick="toggleWatchlist(this)" data-auction-id="{{ auction.id }}" style="color: red;"></i>
+                            {% else %}
+                                <i id="watchlist-icon-{{ auction.id }}" class="fa-regular fa-bookmark watchlist-icon"  onclick="toggleWatchlist(this)" data-auction-id="{{ auction.id }}" style="color: red;"></i>
+                            {% endif %}
+                        </div>                                             
+                        <strong style="color:black;">{{ auction.seller.username }}</strong>
+                        <div style="color: black; font-size: 20px">Description:</div>
+                        <div><p style="color: black; font-size: 20px;">{{ auction.description }}</p></div>
+                        <div style="color: gray;">Posted on:</div>
+                        <div style="color: gray;"><p>{{ auction.creation_date }}</p></div>
+                    </div> 
+                </div>
             </div>
-            <div class="col py-3 border light">
-                <h4><a href="{% url 'listing' auction.id %}" style="color: inherit;"><strong>{{ auction.title }}</strong></a></h4>
-                <!-- Watchlist Icon -->
-                {% if auction in user.watchlist.auctions.all %}
-                    <i id="watchlist-icon-{{ auction.id }}" class="fas fa-heart watchlist-icon in-watchlist" onclick="toggleWatchlist(this)" data-auction-id="{{ auction.id }}" style="color: red;"></i>
-                {% else %}
-                    <i id="watchlist-icon-{{ auction.id }}" class="fas fa-heart-broken watchlist-icon" onclick="toggleWatchlist(this)" data-auction-id="{{ auction.id }}" style="color: red;"></i>
-                {% endif %}
-                <div>Description:</div>
-                <div><p>{{ auction.description }}</p></div>
-                <div>Posted on:</div>
-                <div><p>{{ auction.creation_date }}</p></div>
-            </div> 
+                
+            {% endfor %}
         </div>
-            
-        {% endfor %}
-    </div>
+    </body>
 
     {% include "auctions/footer.html" %}
 {% endblock %}

@@ -17,12 +17,12 @@ function getCookie(name) {
 // Method to update the state of the watchlist icon based on whether the listing is in or out of user's watchlist
 function updateIconAppearance(element, isAdded) {
     if (isAdded) {
-        element.classList.remove('fa-heart-broken');
-        element.classList.add('fa-heart');
+        element.classList.remove('fa-regular', 'fa-bookmark');
+        element.classList.add('fa-solid','fa-bookmark');
         element.style.color = 'red';
     } else {
-        element.classList.remove('fa-heart');
-        element.classList.add('fa-heart-broken');
+        element.classList.remove('fa-solid','fa-bookmark');
+        element.classList.add('fa-regular', 'fa-bookmark');
         element.style.color = 'red';
     }
 }
